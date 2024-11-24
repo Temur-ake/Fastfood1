@@ -69,9 +69,11 @@
             color: white;
             padding: 15px;
             border-radius: 10px;
+            max-width: 90%; /* Limit width on larger screens */
+            box-sizing: border-box;
         }
 
-        /* Ensuring the title and description are visible */
+        /* Ensure the title and description are visible */
         .about_section .heading_container h1,
         .about_section .detail-box h2,
         .about_section .detail-box p {
@@ -96,6 +98,9 @@
                 margin-top: 10px; /* Add margin to ensure space between image and text */
                 padding: 15px;
                 border-radius: 10px;
+                max-width: 80%; /* Limit width of the text box */
+                margin-left: auto;
+                margin-right: auto;
             }
 
             /* Make the title and description more readable on mobile */
@@ -120,6 +125,7 @@
             /* Increase space between image and text on very small screens */
             .about_section .detail-box {
                 margin-top: 20px; /* Add more space for very small screens */
+                max-width: 85%; /* Make the text box a bit narrower */
             }
         }
     </style>
