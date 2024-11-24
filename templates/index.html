@@ -1,0 +1,515 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Site Metas -->
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="{% static 'apps/images/favicon.png' %}" type="">
+
+    <title> Fast food </title>
+
+    <!-- bootstrap core css -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'apps/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"/>
+
+    <!-- Font Awesome CSS (for icons) -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"/>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" type="text/css" href="{% static 'apps/css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'apps/css/responsive.css' %}"/>
+
+    <style>
+        .cart_link1 {
+            color: white;
+        }
+
+        .cart_link1:hover i {
+            color: #00ff00; /* Green color on hover */
+        }
+
+        .user_option {
+            display: flex;
+            align-items: center;
+            margin-left: 6px; /* Pushes the user_option to the right */
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+<div class="hero_area">
+    <div class="bg-box">
+        <img src="{% static 'apps/images/hero-bg.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="{% url 'index' %}">
+            <span>
+              Fast food
+            </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""> </span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'index' %}">Bosh sahifa <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">Biz haqimizda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'book' %}">Buyurtma Berish</a>
+                        </li>
+                    </ul>
+                    <div class="user_option">
+                        <!-- Telephone Number Icon -->
+                        <a href="tel:+998970501655" class="user_link">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </a>
+                        <!-- Gmail Icon -->
+                        <a href="mailto:kozimovt0@gmail.com" class="cart_link1">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+
+
+                        <!-- Order Button -->
+                        <a href="{% url 'book' %}" class="order_online">
+                            Buyurtma !
+                        </a>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+    <!-- slider section -->
+    <section class="slider_section ">
+        <div id="customCarousel1" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-6 ">
+                                <div class="detail-box">
+                                    <h1>
+                                        Fast Food
+                                    </h1>
+                                    <p>
+                                        Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad
+                                        mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore,
+                                        sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="{% url 'book' %}" class="btn1">
+                                            Hoziroq Buyurtma Berish !!!
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-6 ">
+                                <div class="detail-box">
+                                    <h1>
+                                        Fast Food
+                                    </h1>
+                                    <p>
+                                        Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad
+                                        mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore,
+                                        sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="{% url 'book' %}" class="btn1">
+                                            Hoziroq Buyurtma Berish !!!
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item ">
+                    <div class="container ">
+                        <div class="row">
+                            <div class="col-md-7 col-lg-6 ">
+                                <div class="detail-box">
+                                    <h1>
+                                        Fast Food
+                                    </h1>
+                                    <p>
+                                        Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad
+                                        mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore,
+                                        sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                                    </p>
+                                    <div class="btn-box">
+                                        <a href="{% url 'book' %}" class="btn1">
+                                            Hoziroq Buyurtma Berish !!!
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <ol class="carousel-indicators">
+                    <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
+                    <li data-target="#customCarousel1" data-slide-to="1"></li>
+                    <li data-target="#customCarousel1" data-slide-to="2"></li>
+                </ol>
+            </div>
+        </div>
+
+    </section>
+    <!-- end slider section -->
+</div>
+<!-- offer section -->
+<br>
+<br>
+
+<section class="food_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h1>Bizning Menu</h1>
+        </div>
+
+        <!-- Filters Menu -->
+        <ul class="filters_menu">
+            <li class="active" data-filter="*">Hammasi</li>
+            {% for category in categories %}
+                <!-- Slugify category name for valid CSS class usage -->
+                <li data-filter=".{{ category.name|slugify }}">{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Menu Items -->
+        {% if menu_items %}
+            <div class="filters-content">
+                <div class="row grid">
+                    {% for item in menu_items %}
+                        <!-- Use slugify for the category class in menu items as well -->
+                        <div class="col-sm-6 col-lg-4 all {{ item.category.name|slugify }}">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img style="width: 55%" src="{{ item.image.url }}" alt="{{ item.name }}">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>{{ item.name }}</h5>
+                                        <p>{{ item.description }}</p>
+                                        <div class="options">
+                                            <h6>{{ item.price|intcomma }} so'm</h6>
+                                            <a href="{% url 'book' %}">
+                                                <img src="{% static 'apps/images/add_3.png' %}"
+                                                     style="width: 25px; height: 20px;" alt="Add to Cart">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Include Isotope JS -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var grid = document.querySelector('.filters-content .grid');
+        var iso = new Isotope(grid, {
+            itemSelector: '.col-sm-6', // Target individual items
+            layoutMode: 'fitRows'
+        });
+
+        // Filtering
+        var filterButtons = document.querySelectorAll('.filters_menu li');
+        filterButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                // Remove 'active' class from all buttons
+                filterButtons.forEach(function (btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Add 'active' class to the clicked button
+                button.classList.add('active');
+
+                // Get the filter value from data-filter attribute
+                var filterValue = button.getAttribute('data-filter');
+                iso.arrange({filter: filterValue});
+            });
+        });
+    });
+</script>
+
+
+<section class="about_section layout_padding">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h1>Biz Haqimizda </h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="img-box">
+                    <img src="{% static 'apps/images/about-img.png' %}" alt="{{ about.title }}">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="detail-box">
+                    <div class="heading_container">
+                        <h2>{{ about.title }}</h2>
+                    </div>
+                    <p>{{ about.description }}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- end about section -->
+
+<!-- book section -->
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Book A Table</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form_container">
+                    <form method="post" action="{% url 'book' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Buyurtmachi ismi : </label>
+                            <input type="text" name="name" id="name" placeholder="Name" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Buyurtmachi Telefon Raqami :</label>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="+998(__) ___-__-__"
+                                   pattern="\+998 \d{2}-\d{3}-\d{2}-\d{2}" required
+                                   title="Phone number must be in the format +998 99-999-99-99" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Buyurtma Detallari (Mahsulot nomi va soni kiritilishi shart) :</label>
+                            <input type="email" name="email" id="email"
+                                   placeholder=" 4 ta Mini Hot dog , 1 tasi ketchupsiz !!! "
+                                   required
+                                   class="form-control">
+                        </div>
+                        <div class="btn_box">
+                            <button type="submit" class="btn btn-primary">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map_container">
+                    <div id="googleMap" style="height: 400px; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end book section -->
+
+<!-- client section -->
+
+
+<!-- client section -->
+<footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Contact Us
+                    </h4>
+                    <div class="contact_link_box">
+                        <a href="{% url 'book' %}">
+                            <i class="fa-solid fa-map-marker-alt"></i>
+                            <span>Location</span>
+                        </a>
+                        <a href="tel:+998970501655">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Call +998970501655</span>
+                        </a>
+                        <a href="mailto:kozimovt0@gmail.com">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>kozimovt0@gmail.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <div class="footer_detail">
+                    <a href="#" class="footer-logo">
+                        Fast food
+                    </a>
+                    <p>
+                        You can contact us with the following:
+                    </p>
+                    <div class="footer_social">
+                        <!-- Phone link -->
+                        <a href="tel:+998970501655" class="user_link">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+
+                        <!-- Email link -->
+                        <a href="mailto:kozimovt0@gmail.com" class="cart_link1">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+
+                        <!-- Instagram link (with proper protocol) -->
+                        <a href="https://www.instagram.com/steav.oo7/" target="_blank">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <!-- Telegram link (with proper protocol) -->
+                        <a href="https://t.me/C_W24" target="_blank">
+                            <i class="fa-brands fa-telegram"></i>
+                        </a>
+
+                        <!-- Facebook link (with proper protocol) -->
+                        <a href="https://www.facebook.com/profile.php?id=61569250413391&mibextid=ZbWKwL" target="_blank">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <h4>
+                    Opening Hours
+                </h4>
+                <p>
+                    Everyday
+                </p>
+                <p>
+                    10:00 am - 22:00 pm
+                </p>
+            </div>
+        </div>
+        <p>
+            <span id="displayYear"></span> Distributed By
+            <a href="#" target="_blank">Temur Kozimov</a>
+        </p>
+    </div>
+</footer>
+
+
+<!-- jQuery -->
+<script src="{% static 'apps/js/jquery-3.4.1.min.js' %}"></script>
+
+<!-- Popper.js (for Bootstrap) -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="{% static 'apps/js/bootstrap.js' %}"></script>
+
+<!-- Owl Carousel JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+<!-- Isotope JS -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+
+<!-- Nice Select JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+
+<!-- Custom JavaScript -->
+<script src="{% static 'apps/js/custom.js' %}"></script>
+
+<!-- Google Maps -->
+{#<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>#}
+
+<!-- Initialize Owl Carousel -->
+<script>
+    function initMap() {
+        // Correct coordinates for Qo'rg'ontepa town, Andijan Region, Uzbekistan
+        var qorgontepa = {lat: 40.7380, lng: 72.2641};
+
+        // Create a map centered on Qo'rg'ontepa
+        var map = new google.maps.Map(document.getElementById('googleMap'), {
+            zoom: 12, // Adjust zoom level as needed
+            center: qorgontepa
+        });
+
+        // Add a marker for Qo'rg'ontepa
+        var marker = new google.maps.Marker({
+            position: qorgontepa,
+            map: map,
+            title: 'Andijan Region Qo\'rg\'ontepa town, Uzbekistan'
+        });
+    }
+</script>
+
+<!-- Google Maps JavaScript API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATLZXAKAtUvmaq9qftSy2WzUcIRL8bn0g&callback=initMap" async
+        defer></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#phone_number').inputmask({
+            "mask": "+\\9\\98(99) 999-99-99"
+        });
+    });
+</script>
+</body>
+
+</html>

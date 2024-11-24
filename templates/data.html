@@ -1,0 +1,157 @@
+{% load tz %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Details</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            margin-top: 20px;
+            background-color: #f8f9fa;
+            padding: 10px;
+            position: relative; /* Changed to relative for better control */
+            bottom: 0;
+            width: 100%;
+        }
+
+        .navbar {
+            margin-bottom: 20px;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+        }
+
+        /* Container settings for better responsiveness */
+        .container {
+            max-width: 100%;
+            margin: auto;
+            padding: 0 15px; /* Add some padding */
+        }
+
+        .table {
+            margin-top: 20px;
+        }
+
+        .table thead {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .table th, .table td {
+            text-align: center;
+        }
+
+        /* Make table scrollable on smaller screens */
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        /* Navbar responsiveness */
+        @media (max-width: 768px) {
+            .navbar-nav {
+                text-align: center;
+            }
+
+            .navbar-nav .nav-item {
+                margin-bottom: 10px;
+            }
+
+            .navbar-collapse {
+                justify-content: center;
+            }
+
+            .container {
+                padding: 0 10px; /* More padding for smaller screens */
+            }
+        }
+
+        /* Optional: Adjust table for very small screens (mobile-first design) */
+        @media (max-width: 480px) {
+            .table th, .table td {
+                font-size: 12px;
+            }
+
+            .footer p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'index' %}">MySite</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'book' %}">Book a Table</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main role="main" class="container mt-5">
+    <h2>Booking Details</h2>
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Product Detail</th>
+                <th>Booking Date</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% load tz %}
+            {% for offer in data %}
+                <tr>
+                    <td>{{ offer.name }}</td>
+                    <td>{{ offer.phone_number }}</td>
+                    <td>{{ offer.product_detail }}</td>
+                    <td>{{ offer.booking_date|date:"F j, Y, g:i a" }}</td>
+                    <td>{{ offer.product }}</td>
+                    <td>{{ offer.quantity }}</td>
+                    <td>{{ offer.status }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="7">No bookings available.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer class="footer bg-light text-center py-3">
+    <p>&copy; 2024 MySite. All Rights Reserved.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

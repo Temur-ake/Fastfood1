@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Site Metas -->
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="{% static 'apps/images/favicon.png' %}" type="image/png"/>
+
+    <title>Fast food</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'apps/css/bootstrap.css' %}"/>
+
+    <!-- Owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <!-- Nice Select -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+          integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+          crossorigin="anonymous"/>
+    <!-- Font Awesome style -->
+    <link href="{% static 'apps/css/font-awesome.min.css' %}" rel="stylesheet"/>
+    <!-- Custom styles for this template -->
+    <link href="{% static 'apps/css/style.css' %}" rel="stylesheet"/>
+    <!-- Responsive style -->
+    <link href="{% static 'apps/css/responsive.css' %}" rel="stylesheet"/>
+    <style>
+        .cart_link1 {
+            color: white;
+        }
+
+        .cart_link1:hover i {
+            color: #00ff00; /* Green color on hover */
+        }
+
+        /* style.css */
+
+        /* General Form Styles */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        section.book_section {
+            padding: 60px 0;
+        }
+
+        .heading_container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .map_container {
+            margin-top: 20px;
+        }
+
+    </style>
+
+</head>
+
+<body class="sub_page">
+
+<div class="hero_area">
+    <div class="bg-box">
+        <img src="{% static 'apps/images/hero-bg.jpg' %}" alt="">
+    </div>
+    <!-- header section starts -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <span>
+                        Fast food
+                    </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""> </span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Bosh sahifa <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">Biz haqimizda</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'book' %}">Buyurtma Berish</a>
+                        </li>
+                    </ul>
+                    <div class="user_option">
+                        <!-- Telephone Number Icon -->
+                        <a href="tel:+1234567890" class="user_link">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </a>
+                        <!-- Gmail Icon -->
+                        <a href="mailto:example@gmail.com" class="cart_link1">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <!-- Order Button -->
+                        <a href="" class="order_online">
+                            Buyurtma !
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+</div>
+
+<!-- book section -->
+<section class="book_section layout_padding">
+    <div class="container">
+        <div class="heading_container">
+            <h2>Book A Table</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form_container">
+                    <form method="post" action="{% url 'book' %}">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Buyurtmachi ismi :</label>
+                            <input type="text" name="name" id="name" placeholder="Ismingizni kiriting :" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Buyurtmachi Telefon Raqami :</label>
+                            <input type="text" name="phone_number" id="phone_number" placeholder="+998(__) ___-__-__"
+                                   required
+                                   title="Phone number must be in the format +998 99-999-99-99" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Buyurtma Detallari  (Mahsulot nomi va soni kiritilishi shart) :</label>
+                            <input type="text" name="product_detail" id="product_detail" placeholder="4 ta Mini Hot dog , 1 tasi ketchupsiz !!!" required
+                                   class="form-control">
+                        </div>
+                        <div class="btn_box">
+                            <button type="submit" class="btn btn-primary">Book Now</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map_container">
+                    <div id="googleMap" style="height: 400px; width: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- end book section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Contact Us
+                    </h4>
+                    <div class="contact_link_box">
+                        <a href="">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                  Location 
+                </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                  Call +998970501655
+                </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                  kozimovt0@gmail.com
+                </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <div class="footer_detail">
+                    <a href="" class="footer-logo">
+                        Fast food
+                    </a>
+                    <p>
+                        You can Contact with us with following:
+                    </p>
+                    <div class="footer_social">
+                        <a href="tel:+998970501655" class="user_link">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </a>
+                        <!-- Gmail Icon -->
+                        <a href="mailto:kozimovt0@gmail.com" class="cart_link1">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/steav.oo7/">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://t.me/C_W24">
+                            <i class="fa fa-telegram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61569250413391&mibextid=ZbWKwL">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <h4>
+                    Opening Hours
+                </h4>
+                <p>
+                    Everyday
+                </p>
+                <p>
+                    10:00 am - 22:00 pm
+                </p>
+            </div>
+        </div>
+        <p>
+            <span id="displayYear"></span> Distributed By
+            <a href="#" target="_blank">Temur Kozimov</a>
+        </p>
+    </div>
+</footer>
+<!-- footer section -->
+
+<!-- jQuery -->
+<script src="{% static 'apps/js/jquery-3.4.1.min.js' %}"></script>
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<!-- Bootstrap JS -->
+<script src="{% static 'apps/js/bootstrap.js' %}"></script>
+<!-- Owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<!-- Isotope JS -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<!-- Nice Select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+<!-- Custom JS -->
+<script src="{% static 'apps/js/custom.js' %}"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+<!-- End Google Map -->
+<script>
+    function initMap() {
+        // Correct coordinates for Qo'rg'ontepa town, Andijan Region, Uzbekistan
+        var qorgontepa = {lat: 40.7380, lng: 72.2641};
+
+        // Create a map centered on Qo'rg'ontepa
+        var map = new google.maps.Map(document.getElementById('googleMap'), {
+            zoom: 12, // Adjust zoom level as needed
+            center: qorgontepa
+        });
+
+        // Add a marker for Qo'rg'ontepa
+        var marker = new google.maps.Marker({
+            position: qorgontepa,
+            map: map,
+            title: 'Andijan Region Qo\'rg\'ontepa town, Uzbekistan'
+        });
+    }
+</script>
+
+<!-- Google Maps JavaScript API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATLZXAKAtUvmaq9qftSy2WzUcIRL8bn0g&callback=initMap" async
+        defer></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#phone_number').inputmask({
+                "mask": "+\\9\\98(99) 999-99-99"
+            });
+        });
+    </script>
+</body>
+
+</html>

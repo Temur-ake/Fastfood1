@@ -1,0 +1,388 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Site Metas -->
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+    <link rel="shortcut icon" href="{% static 'apps/images/favicon.png' %}" type="">
+
+    <title> Fast food </title>
+
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'apps/css/bootstrap.css' %}"/>
+
+    <!--owl slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"/>
+    <!-- nice select  -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css"
+          integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ=="
+          crossorigin="anonymous"/>
+    <!-- font awesome style -->
+    <link href="{% static 'apps/css/font-awesome.min.css' %}" rel="stylesheet"/>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'apps/css/style.css' %}" rel="stylesheet"/>
+    <!-- responsive style -->
+    <link href="{% static 'apps/css/responsive.css' %}" rel="stylesheet"/>
+
+    <style>
+        .cart_link1 {
+            color: white;
+        }
+
+        .cart_link1:hover i {
+            color: #00ff00; /* Green color on hover */
+        }
+
+
+        .user_option {
+            display: flex;
+            align-items: center;
+            margin-left: auto; /* Pushes the user options to the right */
+        }
+
+        .user_option a {
+            margin: 0 10px; /* Space between icons */
+        }
+
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: white;
+            margin: 0 10px; /* Space between search icon and other icons */
+        }
+
+        .search-form {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            flex-direction: column;
+        }
+
+        .search-input {
+            border: black;
+            padding: 10px;
+            border-radius: 4px;
+            margin-right: 5px;
+            margin-top: 100px;
+            width: 300px; /* Adjust width as needed */
+            display: none; /* Initially hidden */
+        }
+
+        .search-button {
+            background-color: black; /* Adjust color as needed */
+            padding: 5px 10px;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+        }
+
+        /* Show the search form when the search icon is clicked */
+        .search-container.show-form .search-form {
+            display: flex;
+        }
+
+        .search-container.show-form .search-input,
+        .search-container.show-form .search-button {
+            display: block;
+        }
+
+        @media (max-width: 500px) {
+            .search-input {
+            border: black;
+            padding: 2px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-top: 75px;
+            width: 200px; /* Adjust width as needed */
+            display: none; /* Initially hidden */
+        }
+        }
+    </style>
+
+</head>
+
+<body class="sub_page">
+
+<div class="hero_area">
+    <div class="bg-box">
+        <img src="{% static 'apps/images/hero-bg.jpg' %}" alt="">
+    </div>
+    <!-- header section strats -->
+    <header class="header_section">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg custom_nav-container ">
+                <a class="navbar-brand" href="{% url 'index' %}">
+            <span>
+              Fast food
+            </span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class=""> </span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'index' %}">Bosh sahifa <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">Biz haqimizda</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'book' %}">Buyurtma Berish</a>
+                        </li>
+                    </ul>
+                    <div class="user_option">
+                        <!-- Telephone Number Icon -->
+                        <a href="tel:+1234567890" class="user_link">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </a>
+                        <!-- Gmail Icon -->
+                        <a href="mailto:example@gmail.com" class="cart_link1">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <div class="search-container">
+                            <button class="search-toggle">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                            <form action="{% url 'search' %}" method="get" class="search-form">
+                                <input type="text" name="query" class="search-input" placeholder="Mahsulot Qidiring ...">
+                                <button type="submit" class="search-button">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                        </div>
+                        <!-- Order Button -->
+                        <a href="#" class="order_online">Harid !
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- end header section -->
+</div>
+
+<!-- food section -->
+
+<section class="food_section layout_padding-bottom">
+    <div class="container">
+        <div class="heading_container heading_center">
+            <h1>Bizning Menu</h1>
+        </div>
+        <br>
+
+        <!-- Filters Menu -->
+        <ul class="filters_menu">
+            <li class="active" data-filter="*">Hammasi</li>
+            {% for category in categories %}
+                <!-- Slugify category name for valid CSS class usage -->
+                <li data-filter=".{{ category.name|slugify }}">{{ category.name }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Menu Items -->
+        {% if menu_items %}
+            <div class="filters-content">
+                <div class="row grid">
+                    {% for item in menu_items %}
+                        <!-- Use slugify for the category class in menu items as well -->
+                        <div class="col-sm-6 col-lg-4 all {{ item.category.name|slugify }}">
+                            <div class="box">
+                                <div>
+                                    <div class="img-box">
+                                        <img style="width: 55%" src="{{ item.image.url }}" alt="{{ item.name }}">
+                                    </div>
+                                    <div class="detail-box">
+                                        <h5>{{ item.name }}</h5>
+                                        <p>{{ item.description }}</p>
+                                        <div class="options">
+                                            <h6>{{ item.price|intcomma }} so'm</h6>
+                                            <a href="{% url 'book' %}">
+                                                <img src="{% static 'apps/images/add_3.png' %}"
+                                                     style="width: 25px; height: 20px;" alt="Add to Cart">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Include Isotope JS -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var grid = document.querySelector('.filters-content .grid');
+        var iso = new Isotope(grid, {
+            itemSelector: '.col-sm-6', // Target individual items
+            layoutMode: 'fitRows'
+        });
+
+        // Filtering
+        var filterButtons = document.querySelectorAll('.filters_menu li');
+        filterButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                // Remove 'active' class from all buttons
+                filterButtons.forEach(function (btn) {
+                    btn.classList.remove('active');
+                });
+
+                // Add 'active' class to the clicked button
+                button.classList.add('active');
+
+                // Get the filter value from data-filter attribute
+                var filterValue = button.getAttribute('data-filter');
+                iso.arrange({filter: filterValue});
+            });
+        });
+    });
+</script>
+
+
+<!-- end food section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 footer-col">
+                <div class="footer_contact">
+                    <h4>
+                        Contact Us
+                    </h4>
+                    <div class="contact_link_box">
+                        <a href="{% url 'book' %}">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            <span>
+                  Location 
+                </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                            <span>
+                  Call +998970501655
+                </span>
+                        </a>
+                        <a href="">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                            <span>
+                  kozimovt0@gmail.com
+                </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <div class="footer_detail">
+                    <a href="" class="footer-logo">
+                        Fast food
+                    </a>
+                    <p>
+                        You can Contact with us with following:
+                    </p>
+                    <div class="footer_social">
+                        <a href="tel:+998970501655" class="user_link">
+                            <i class="fa fa-phone" aria-hidden="true"></i>
+                        </a>
+                        <!-- Gmail Icon -->
+                        <a href="mailto:kozimovt0@gmail.com" class="cart_link1">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.instagram.com/steav.oo7/">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://t.me/C_W24">
+                            <i class="fa fa-telegram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61569250413391&mibextid=ZbWKwL">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 footer-col">
+                <h4>
+                    Opening Hours
+                </h4>
+                <p>
+                    Everyday
+                </p>
+                <p>
+                    10:00 am - 22:00 pm
+                </p>
+            </div>
+        </div>
+        <p>
+            <span id="displayYear"></span> Distributed By
+            <a href="#" target="_blank">Temur Kozimov</a>
+        </p>
+    </div>
+</footer>
+<!-- footer section -->
+
+<!-- jQery -->
+<script src="{% static 'apps/js/jquery-3.4.1.min.js' %}"></script>
+<!-- popper js -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+</script>
+<!-- bootstrap js -->
+<script src="{% static 'apps/js/bootstrap.js' %}"></script>
+<!-- owl slider -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+</script>
+<!-- isotope js -->
+<script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+<!-- nice select -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+<!-- custom js -->
+<script src="{% static 'apps/js/custom.js' %}"></script>
+<!-- Google Map -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+</script>
+<!-- End Google Map -->
+<script>
+    document.querySelector('.search-toggle').addEventListener('click', function () {
+        document.querySelector('.search-container').classList.toggle('show-form');
+    });
+</script>
+</body>
+
+</html>
