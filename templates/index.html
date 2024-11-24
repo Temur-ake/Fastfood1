@@ -59,6 +59,77 @@
 
     </style>
 
+    <style>
+        /* Ensure the image box is responsive */
+        .about_section .img-box {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Style for the heading and text inside the detail box */
+        .about_section .detail-box {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* Ensuring the title and description are visible */
+        .about_section .heading_container h1,
+        .about_section .detail-box h2,
+        .about_section .detail-box p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Make the layout responsive for smaller screens */
+        @media (max-width: 700px) {
+            .about_section .row {
+                display: block; /* Stack the image and text vertically */
+            }
+
+            .about_section .img-box {
+                width: 100%; /* Full width image */
+            }
+
+            .about_section .detail-box {
+                position: relative;
+                background-color: rgba(0, 0, 0, 0.5); /* Make the text box background darker */
+                color: white;
+                margin-top: 10px; /* Add margin to ensure space between image and text */
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            /* Make the title and description more readable on mobile */
+            .about_section .detail-box h2 {
+                font-size: 24px;
+            }
+
+            .about_section .detail-box p {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .about_section .detail-box h2 {
+                font-size: 20px;
+            }
+
+            .about_section .detail-box p {
+                font-size: 14px;
+            }
+
+            /* Increase space between image and text on very small screens */
+            .about_section .detail-box {
+                margin-top: 20px; /* Add more space for very small screens */
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -292,8 +363,8 @@
 
 <section class="about_section layout_padding">
     <div class="container">
-        <div class="heading_container heading_center">
-            <h1>Biz Haqimizda </h1>
+        <div class="heading_container heading_center" style="margin-top: -80px">
+            <h1>Bizning Haqimizda</h1>
         </div>
         <br>
         <br>
@@ -301,16 +372,17 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="img-box">
-                    <img src="{% static 'apps/images/about-img.png' %}" alt="{{ about.title }}">
+                    <img src="{% static 'apps/images/about-img.png' %}" alt="About Us">
                 </div>
             </div>
+            <br>
+            <br>
             <div class="col-md-6">
                 <div class="detail-box">
                     <div class="heading_container">
                         <h2>{{ about.title }}</h2>
                     </div>
                     <p>{{ about.description }}</p>
-
                 </div>
             </div>
         </div>
@@ -422,7 +494,8 @@
                         </a>
 
                         <!-- Facebook link (with proper protocol) -->
-                        <a href="https://www.facebook.com/profile.php?id=61569250413391&mibextid=ZbWKwL" target="_blank">
+                        <a href="https://www.facebook.com/profile.php?id=61569250413391&mibextid=ZbWKwL"
+                           target="_blank">
                             <i class="fa-brands fa-facebook"></i>
                         </a>
                     </div>
